@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import Button from '../Button/Button';
 import Card from '../Card/Card';
 
 const CardContainer = () => {
 
     const [data , setData] = useState([]);
+    const [showAll , setShowAll] = useState(false);
 
     useEffect(()=>{
 
@@ -16,15 +18,28 @@ const CardContainer = () => {
         loadData();
 
     },[]);
+
+    const displayAll = () =>{
+        setShowAll(true);
+    }
     
     return (
-        <div className='p-2 container mx-auto my-4 grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
+        <>
+
+            <div className='p-2 container mx-auto my-4 grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
+                {
+                    data.slice(0, showAll ? 12: 6).map(singleData=> <Card info={singleData} key={singleData.id}> </Card> )
+                }
+            </div>
 
             {
-                data.map(singleData=> <Card info={singleData} key={singleData.id}> </Card> )
-            }
+                !showAll && (
+                <span onClick={displayAll}>
+                    <Button>Show All</Button>   
+                </span>)  
+            } 
             
-        </div>
+        </>
     );
 };
 
