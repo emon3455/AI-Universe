@@ -18,7 +18,7 @@ const CardContainer = () => {
     },[]);
     
     return (
-        <div className='p-2 container mx-auto mt-4 grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
+        <div className='p-2 container mx-auto my-4 grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
 
             {
                 data.map(singleData=> <Card info={singleData} key={singleData.id}> </Card> )
