@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../Card/Card';
 
 const CardContainer = () => {
 
@@ -17,12 +18,10 @@ const CardContainer = () => {
     },[]);
     
     return (
-        <div>
+        <div className='p-2 container mx-auto mt-4 grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
 
             {
-                data.map(singleData=>{
-                    console.log(singleData);
-                })
+                data.map(singleData=> <Card info={singleData} key={singleData.id}> </Card> )
             }
             
         </div>
