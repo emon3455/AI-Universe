@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Header from './Components/Header/Header';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <div className="App">
-      <h1>Welcome To My Website</h1>
+    <div>
+        <Header></Header>\
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
