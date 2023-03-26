@@ -1,11 +1,17 @@
 import React from 'react';
+import Button from './Components/Button/Button';
+import CardContainer from './Components/CardContainer/CardContainer';
 import Header from './Components/Header/Header';
 
 const App = () => {
   return (
-    <div>
-        <Header></Header>\
-    </div>
+    <>
+        <Header></Header>
+        <Button>Sort By Date</Button>
+
+        <CardContainer></CardContainer>
+
+    </>
   );
 };
 
