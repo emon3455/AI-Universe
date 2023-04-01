@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import Card from '../Card/Card';
+import Modal from '../Modal/Modal';
 
 const CardContainer = () => {
 
     const [data , setData] = useState([]);
     const [showAll , setShowAll] = useState(false);
+    const [handleID , setHandleID] = useState(null);
+    const [singleInfo , setSingleInfo] = useState([]);
+
+    useEffect(()=>{
+        fetch(`https://openapi.programming-hero.com/api/ai/tool/${handleID}`)
+        .then(res => res.json())
+        .then(data=> setSingleInfo(data.data))
+    },[handleID])
+
+    const handleSingleData =(id)=>{
+        setHandleID(id);
+    }
 
     useEffect(()=>{
 
@@ -28,7 +41,13 @@ const CardContainer = () => {
 
             <div className='p-2 container mx-auto my-4 grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
                 {
-                    data.slice(0, showAll ? 12: 6).map(singleData=> <Card info={singleData} key={singleData.id}> </Card> )
+                    data.slice(0, showAll ? 12: 6).map(singleData=> <Card
+                    info={singleData}
+                    key={singleData.id}
+                    handleSingleData ={handleSingleData}    
+                      >
+
+                    </Card> )
                 }
             </div>
 
@@ -39,6 +58,8 @@ const CardContainer = () => {
                 </span>)  
             } 
             
+            <Modal  singleInfo = {singleInfo}></Modal>
+
         </>
     );
 };
